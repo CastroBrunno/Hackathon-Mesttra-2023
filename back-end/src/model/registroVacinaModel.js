@@ -9,10 +9,9 @@ const findAll = async () => {
 }
 
 const findUnique = async (idPaciente, idVacina, data) => {
-  const query = 'SELECT * FROM paciente WHERE Id_paciente = $1 AND Id_paciente = $2 AND Data_aplicacao = $3';
+  const query = 'SELECT * FROM vacinaaplicada WHERE Id_paciente = $1 AND Id_vacina = $2 AND Data_aplicacao = $3';
 
   const find = await pool.query(query, [idPaciente, idVacina, data]);
-
   return find.rows;
 }
 
