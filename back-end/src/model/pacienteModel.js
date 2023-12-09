@@ -33,9 +33,18 @@ const findAllPacientes = async () => {
   return pacientes.rows;
 }
 
+const findbyId = async (id) => {
+  const query = 'SELECT * FROM paciente WHERE id_paciente = $1';
+
+  const paciente = await pool.query(query, [id]);
+
+  return paciente.rows[0];
+}
+
 module.exports = {
   createUserModel,
   findLastId,
   update,
-  findAllPacientes
+  findAllPacientes,
+  findbyId
 }

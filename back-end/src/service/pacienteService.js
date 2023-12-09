@@ -1,4 +1,4 @@
-const { createUserModel, findLastId, update, findAllPacientes } = require("../model/pacienteModel")
+const { createUserModel, findLastId, update, findAllPacientes, findbyId } = require("../model/pacienteModel")
 
 const createPacienteService = async (nome, dataNascimento) => {
   try {
@@ -26,8 +26,15 @@ const findAllPacienteService = async () => {
   return pacientes;
 }
 
+const findbyIdService = async (id) => {
+  const paciente = await findbyId(id);
+
+  return paciente;
+}
+
 module.exports = {
   createPacienteService,
   updatePacienteService,
-  findAllPacienteService
+  findAllPacienteService,
+  findbyIdService
 }
