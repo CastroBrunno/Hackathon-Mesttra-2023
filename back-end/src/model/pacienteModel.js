@@ -17,7 +17,25 @@ const findLastId = async () => {
   return idMax.rows[0].max;
 }
 
+const update = async (id, nome, dataNascimento) => {
+  const query = 'UPDATE paciente SET nome = $1, Data_nascimento = $2 WHERE id_paciente = $3'
+
+  const update = await pool.query(query, [nome, dataNascimento, id]);
+
+  return update;
+}
+
+const findAllPacientes = async () => {
+  const query = 'SELECT * FROM paciente';
+
+  const pacientes = await pool.query(query);
+
+  return pacientes.rows;
+}
+
 module.exports = {
   createUserModel,
-  findLastId
+  findLastId,
+  update,
+  findAllPacientes
 }

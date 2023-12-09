@@ -1,4 +1,4 @@
-const { createUserModel, findLastId } = require("../model/pacienteModel")
+const { createUserModel, findLastId, update, findAllPacientes } = require("../model/pacienteModel")
 
 const createPacienteService = async (nome, dataNascimento) => {
   try {
@@ -12,9 +12,22 @@ const createPacienteService = async (nome, dataNascimento) => {
   } catch {
     return { code: 500, message: 'Erro interno do servidor' };
   }
+}
 
+const updatePacienteService = async (id, nome, dataNascimento) => {
+  const updatePaciente = update(id, nome, dataNascimento);
+
+  return updatePaciente;
+}
+
+const findAllPacienteService = async () => {
+  const pacientes = await findAllPacientes();
+
+  return pacientes;
 }
 
 module.exports = {
-  createPacienteService
+  createPacienteService,
+  updatePacienteService,
+  findAllPacienteService
 }
