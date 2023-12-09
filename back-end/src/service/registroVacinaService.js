@@ -1,4 +1,4 @@
-const { findAll, createRegister, deleteRegister } = require("../model/registroVacinaModel")
+const { findAll, createRegister, deleteRegister, findUnique } = require("../model/registroVacinaModel")
 
 const findAllRegistroService = async () => {
   const vacinasRegistradas = await findAll();
@@ -7,6 +7,12 @@ const findAllRegistroService = async () => {
 }
 
 const createRegistroVacinaService = async (idPaciente, idVacina, data) => {
+  const exists = await findUnique(idPaciente, idVacina, data);
+
+  if (exists.length === 0) {
+    return { code: 404, message: 'Registro não encontrado' };
+  }
+
   try {
     const newDate = new Date(`${data[2]}-${data[1]}-${data[0]}`);
 
@@ -19,10 +25,9 @@ const createRegistroVacinaService = async (idPaciente, idVacina, data) => {
 }
 
 const deleteRegisterService = async (idPaciente, idVacina, data) =>{
-
   try {
-
     const newDate = new Date(`${data[2]}-${data[1]}-${data[0]}`);
+
     await deleteRegister(idPaciente, idVacina, newDate)
 
     return {code: 204, message:'Usuário deletado com sucesso'}

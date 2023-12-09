@@ -8,6 +8,14 @@ const findAll = async () => {
   return vacinasAplicadas.rows;
 }
 
+const findUnique = async (idPaciente, idVacina, data) => {
+  const query = 'SELECT * FROM paciente WHERE Id_paciente = $1 AND Id_paciente = $2 AND Data_aplicacao = $3';
+
+  const find = await pool.query(query, [idPaciente, idVacina, data]);
+
+  return find.rows;
+}
+
 const createRegister = async (idPaciente, idVacina, data) => {
   const query = 'INSERT INTO vacinaaplicada (Id_paciente, Id_vacina, Data_aplicacao) VALUES ($1, $2, $3)';
 
@@ -21,12 +29,13 @@ const deleteRegister = async (idPaciente, idVacina, data) =>{
 
   const remove = await pool.query(query, [idPaciente, idVacina, data]);
 
-  return remove
+  return remove;
 }
 
 module.exports = {
   findAll,
   createRegister,
-  deleteRegister
+  deleteRegister,
+  findUnique
 }
 
