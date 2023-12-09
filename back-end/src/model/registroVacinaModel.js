@@ -16,7 +16,17 @@ const createRegister = async (idPaciente, idVacina, data) => {
   return create;
 }
 
+const deleteRegister = async (idPaciente, idVacina, data) =>{
+  const query = 'DELETE FROM vacinaaplicada WHERE Id_paciente = $1 AND Id_vacina = $2 AND Data_aplicacao = $3';
+
+  const remove = await pool.query(query, [idPaciente, idVacina, data]);
+
+  return remove
+}
+
 module.exports = {
   findAll,
-  createRegister
+  createRegister,
+  deleteRegister
 }
+

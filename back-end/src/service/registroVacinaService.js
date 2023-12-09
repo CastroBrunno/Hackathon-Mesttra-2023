@@ -1,4 +1,4 @@
-const { findAll, createRegister } = require("../model/registroVacinaModel")
+const { findAll, createRegister, deleteRegister } = require("../model/registroVacinaModel")
 
 const findAllRegistroService = async () => {
   const vacinasRegistradas = await findAll();
@@ -18,7 +18,21 @@ const createRegistroVacinaService = async (idPaciente, idVacina, data) => {
   }
 }
 
+const deleteRegisterService = async (idPaciente, idVacina, data) =>{
+
+  try {
+
+    const newDate = new Date(`${data[2]}-${data[1]}-${data[0]}`);
+    await deleteRegister(idPaciente, idVacina, newDate)
+
+    return {code: 204, message:'Usuário deletado com sucesso'}
+  } catch (error) {
+    return { code: 500, message: error.message };
+  }
+}
+
 module.exports = {
   findAllRegistroService,
-  createRegistroVacinaService
+  createRegistroVacinaService,
+  deleteRegisterService
 }
