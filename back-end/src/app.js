@@ -8,7 +8,8 @@ app.use(express.json());
 
 app.use('/paciente', routesPaciente);
 app.get('/', (req, res) => res.status(200).json('ok'))
-app.use('/vacinas', routesVacina)
+app.use('/vacinas', routesVacina);
+
 
 module.exports = app;
 
