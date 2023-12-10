@@ -1,4 +1,4 @@
-const { findVacinasServices, findVacinaIdadeServices, } = require("../service/VacinaService");
+const { findVacinasServices, findVacinaIdadeServices } = require("../service/VacinaService");
 
 const findVacinasController = async (req, res) => {
     const vacinas = await findVacinasServices();

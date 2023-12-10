@@ -12,8 +12,7 @@ const findIdade = async (mesAno, valor, tipo) => {
 
     if (mesAno == 'mes') {
         if (tipo === 'ate') {
-            const query = `SELECT
-            *,
+            const query = `SELECT *,
             CAST(
               CASE
                 WHEN regexp_replace(desc_meses, '\D', '', 'g') ~ E'^\\d+$' THEN regexp_replace(desc_meses, '\D', '', 'g')::integer
@@ -64,6 +63,10 @@ const findIdade = async (mesAno, valor, tipo) => {
                 ELSE null
               END AS integer
             ) <= 2;`
+
+            const consult = await pool.query(query, [valor]);
+    
+            return consult.rows;
         }else{
             const query = `SELECT * FROM public.vacina as vacinas 
             INNER JOIN public.periodoaplicacaoano as periodo_ano ON periodo_ano.id_vacina = vacinas.id_vacina 
@@ -83,6 +86,5 @@ const findIdade = async (mesAno, valor, tipo) => {
 
 module.exports = {
     findVacinas,
-    findIdade,
-    findVacinaProtecaoModel
+    findIdade
 }
