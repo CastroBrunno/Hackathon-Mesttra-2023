@@ -1,4 +1,4 @@
-const { findVacinasServices, findVacinaIdadeServices } = require("../service/VacinaService");
+const { findVacinasServices, findVacinaIdadeServices, findVacinaPacienteServices } = require("../service/VacinaService");
 
 const findVacinasController = async (req, res) => {
     const vacinas = await findVacinasServices();
@@ -14,7 +14,17 @@ const findVacinasController = async (req, res) => {
     return res.status(302).json(idades);
   }
 
+
+  const findVacinasPacienteController = async (req, res) => {
+    const {nome} = req.body;
+
+    const paciente = await findVacinaPacienteServices(nome);
+  
+    return res.status(302).json(paciente);
+  }
+
   module.exports = {
     findVacinasController,
-    findVacinasIdadeController
+    findVacinasIdadeController,
+    findVacinasPacienteController
   }

@@ -1,4 +1,4 @@
-const { findVacinas, findIdade } = require("../model/VacinaModel")
+const { findVacinas, findIdade, findPacientes } = require("../model/VacinaModel")
 
 const findVacinasServices = async () => {
   const vacinas = await findVacinas();
@@ -12,8 +12,15 @@ const findVacinaIdadeServices = async (mesAno, valor, tipo) => {
   return idades;
 }
 
+const findVacinaPacienteServices = async (nome) => {
+  const paciente = await findPacientes(nome);
+
+  return paciente;
+}
+
 
 module.exports = {
   findVacinasServices,
-  findVacinaIdadeServices
+  findVacinaIdadeServices,
+  findVacinaPacienteServices
 }

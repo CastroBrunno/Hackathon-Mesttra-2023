@@ -84,7 +84,21 @@ const findIdade = async (mesAno, valor, tipo) => {
 }
 
 
+const findPacientes = async (nome) => {
+    const query = `SELECT * 
+    FROM paciente AS pa
+    inner JOIN vacinaaplicada AS vacina_aplicada ON vacina_aplicada.id_paciente = pa.id_paciente
+    inner JOIN vacina AS vac ON vac.id_vacina = vacina_aplicada.id_vacina
+    WHERE pa.nome = $1;`
+
+    const paciente = await pool.query(query, [nome]);
+
+    return paciente.rows;
+}
+
+
 module.exports = {
     findVacinas,
-    findIdade
+    findIdade,
+    findPacientes
 }
