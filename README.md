@@ -28,6 +28,14 @@ git clone git@github.com:sergioruza/Hackathon-Mesttra-2023.git
 
 ```
 cd Hackathon-Mesttra-2023
+cd ./back-end
+```
+
+3. instale as dependêcias e suba o servidor:
+
+```
+npm install
+npm run dev
 ```
 
 **Contribuidores**
