@@ -1,5 +1,11 @@
 # <h1 align="center">💉 Carteira-de-Vacinação 💉</h1>
 
+<fig>
+<div align="center">
+<img src="./images/OIG.jpeg" alt="Uma imagem relacionada ao projeto" width=600>
+</div>
+</fig>
+
 **Descrição**
 
 Este projeto é uma aplicação de carteira de vacinação desenvolvida utilizando JavaScript no lado do cliente (front-end), Express como framework no lado do servidor (back-end) e PostgreSQL como banco de dados para armazenar as informações.
