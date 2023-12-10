@@ -1,4 +1,7 @@
-const { findVacinasServices, findVacinaIdadeServices, findVacinaPacienteServices } = require("../service/VacinaService");
+const { findVacinasServices,
+  findVacinaIdadeServices,
+  findVacinaPacienteServices,
+  findByProtecaoService } = require("../service/VacinaService");
 
 const findVacinasController = async (req, res) => {
     const vacinas = await findVacinasServices();
@@ -23,8 +26,22 @@ const findVacinasController = async (req, res) => {
     return res.status(302).json(paciente);
   }
 
+const findByProtecaoController = async (req, res) => {
+  const { protecao } = req.body;  
+
+    try{
+      const consulta = await findByProtecaoService(protecao);
+      res.status(200).json(consulta);
+    }
+    catch (error) {
+      console.log (error);
+      res.status(404).json({mensagem: 'erro ao executar a consulta.'});
+    }
+  }
+
   module.exports = {
     findVacinasController,
     findVacinasIdadeController,
-    findVacinasPacienteController
+    findVacinasPacienteController,
+    findByProtecaoController
   }

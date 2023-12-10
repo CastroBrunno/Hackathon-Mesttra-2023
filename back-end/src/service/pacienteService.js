@@ -1,4 +1,8 @@
-const { createUserModel, findLastId, update, findAllPacientes, findbyId } = require("../model/pacienteModel")
+const { createUserModel,
+  findLastId,
+  update,
+  findAllPacientes,
+  findbyId } = require("../model/pacienteModel")
 
 const createPacienteService = async (nome, dataNascimento) => {
   try {

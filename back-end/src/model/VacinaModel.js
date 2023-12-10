@@ -1,7 +1,10 @@
 const pool = require('../connection/pool');
 
 const findVacinas = async () => {
-    const query = 'SELECT  vacina.*,  periodo_ano.*,  periodo_mes.*,  rede.* FROM  vacina full JOIN  periodoaplicacaoano AS periodo_ano ON vacina.Id_vacina = periodo_ano.Id_vacina full  join  periodoaplicacaomes AS periodo_mes ON vacina.Id_vacina = periodo_mes.Id_vacina full JOIN  rede AS rede ON vacina.Id_rede = rede.Id_rede;'
+  const query = `SELECT  vacina.*,  periodo_ano.*,  periodo_mes.*,  rede.* FROM  vacina 
+    full JOIN periodoaplicacaoano AS periodo_ano ON vacina.Id_vacina = periodo_ano.Id_vacina 
+    full JOIN periodoaplicacaomes AS periodo_mes ON vacina.Id_vacina = periodo_mes.Id_vacina 
+    full JOIN  rede AS rede ON vacina.Id_rede = rede.Id_rede;`
 
     const vacinas = await pool.query(query);
 
@@ -96,9 +99,18 @@ const findPacientes = async (nome) => {
     return paciente.rows;
 }
 
+const findByProtecao = async (protecao) => {
+  const query = `select id_vacina ,vacina, sigla_vacina, doenca_protecao, dose 
+  from vacina where doenca_protecao ilike '%' || $1 || '%'`;
+
+  const vacinaProtecao = await pool.query(query, [protecao]);
+
+  return vacinaProtecao.rows;
+}
 
 module.exports = {
     findVacinas,
     findIdade,
-    findPacientes
+    findPacientes,
+    findByProtecao
 }

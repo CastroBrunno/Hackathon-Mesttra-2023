@@ -1,4 +1,7 @@
-const { createPacienteService, updatePacienteService, findAllPacienteService, findbyIdService } = require("../service/pacienteService");
+const { createPacienteService,
+  updatePacienteService,
+  findAllPacienteService,
+  findbyIdService } = require("../service/pacienteService");
 
 const createPacienteController = async (req, res) => {
   const { nome, dataNascimento } = req.body;
