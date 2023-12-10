@@ -2,7 +2,7 @@
 
 <fig>
 <div align="center">
-<img src="./images/OIG.jpeg" alt="Uma imagem relacionada ao projeto" width=600>
+<img src="./images/OIG.jpeg" alt="Uma imagem relacionada ao projeto" width=500>
 </div>
 </fig>
 
