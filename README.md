@@ -1,4 +1,4 @@
-# <h1 align="center">💉 Carteira-de-Vacinação 💉</h1>
+<h1 align="center">💉 Carteira-de-Vacinação 💉</h1>
 
 <fig>
 <div align="center">
