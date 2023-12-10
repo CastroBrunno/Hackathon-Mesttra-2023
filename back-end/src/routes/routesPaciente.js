@@ -9,6 +9,11 @@ const {
   findbyIdController,
 } = require("../controller/pacienteController.js");
 
+const {createPacienteController,
+  updatePacienteController,
+  findAllPacienteController,
+  findbyIdController} = require('../controller/pacienteController.js');
+
 router.post(
   "/",
   /*  #swagger.parameters['createPacienteController'] = {      
