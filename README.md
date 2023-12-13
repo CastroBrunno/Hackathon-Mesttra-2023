@@ -43,7 +43,7 @@ npm run dev
 Bruno Leandro de Castro  
 Itatiana Chaves  
 Kelly Cristina  
-Quênia Matsui
+Quênia Matsui  
 Sérgio Henrique Ruza 
 
 **Data início**
